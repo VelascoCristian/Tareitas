@@ -10,7 +10,7 @@
 - 📅 Establecer fechas de vencimiento para las tareas
 - 🕒 Seguimiento automático de las fechas de creación y última edición.
 
-## 🛠️ Technologies Used
+## 🛠️ Tecnologías utilizadas
 
 - HTML5
 - CSS3
