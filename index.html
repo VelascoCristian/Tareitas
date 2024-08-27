@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tareitas</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="tareitas.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1 class="title">Tareitas</h1>
+        <nav>
+          <input class="input-search" type="text" placeholder="Buscador" />
+          <button class="show-form" onclick="showTaskForm()">
+            Nueva tarea
+          </button>
+          <div id="taskForm" class="task-form">
+            <input type="text" id="taskTitle" placeholder="Título" required />
+            <textarea id="taskDescription" placeholder="Descripción"></textarea>
+            <select id="taskDifficulty">
+              <option value="⭐">Fácil</option>
+              <option value="⭐⭐">Medio</option>
+              <option value="⭐⭐⭐">Difícil</option>
+            </select>
+            <div class="form-buttons">
+              <button onclick="createTask()">Crear Tarea</button>
+              <button onclick="hideTaskForm()">Cancelar</button>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Ordenar</button>
+            <div class="dropdown-content">
+              <button onclick="sortTasks('title', 'asc')">Título (ASC)</button>
+              <button onclick="sortTasks('title', 'desc')">
+                Título (DESC)
+              </button>
+              <button onclick="sortTasks('creationDate', 'asc')">
+                Fecha de Creación (ASC)
+              </button>
+              <button onclick="sortTasks('creationDate', 'desc')">
+                Fecha de Creación (DESC)
+              </button>
+              <button onclick="sortTasks('dueDate', 'asc')">
+                Fecha de Vencimiento (ASC)
+              </button>
+              <button onclick="sortTasks('dueDate', 'desc')">
+                Fecha de Vencimiento (DESC)
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <p class="footer">© Velasco Cristian, 2024</p>
+    </header>
+
+    <main>
+      <section
+        id="pendingSection"
+        ondrop="drop(event, 'Pendiente')"
+        ondragover="allowDrop(event)"
+      >
+        <h2>Pendiente</h2>
+
+        <div id="pendingTasks" class="task-container"></div>
+      </section>
+
+      <section
+        id="inProgressSection"
+        ondrop="drop(event, 'En Curso')"
+        ondragover="allowDrop(event)"
+      >
+        <h2>En curso</h2>
+        <div id="inProgressTasks" class="task-container"></div>
+      </section>
+
+      <section
+        id="completedSection"
+        ondrop="drop(event, 'Terminada')"
+        ondragover="allowDrop(event)"
+      >
+        <h2>Terminada</h2>
+        <div id="completedTasks" class="task-container"></div>
+      </section>
+
+      <section
+        id="cancelledSection"
+        ondrop="drop(event, 'Cancelada')"
+        ondragover="allowDrop(event)"
+      >
+        <h2>Cancelada</h2>
+        <div id="cancelledTasks" class="task-container"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
